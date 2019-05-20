@@ -9,8 +9,8 @@ const boardStyle = {
   gridAutoRows: "auto"
 };
 
-const Board = ({ cells = [] }) => (
-  <div style={boardStyle}>{cells.map(c => <Cell />)}</div>
+const Board = ({ cells = [], PlayerClickedInterGL }) => (
+  <div style={boardStyle}>{cells.map((c, id) => <Cell PlayerClickedInterB={() => PlayerClickedInterGL(id)} c={c}/>)}</div>
 );
 
 export default Board;

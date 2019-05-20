@@ -12,6 +12,40 @@ const cellStyle = {
   cursor: "pointer"
 };
 
-const Cell = () => <div style={cellStyle}>?</div>;
+
+const cellStyleIsOver = {...cellStyle, backgroundColor:"grey"}
+//const Cell = () => <div style={cellStyle}>?</div>;
+
+class Cell extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOver: false,
+    };
+  }
+
+  handlerMouseOver() {
+    this.setState({isMouseOver:true});
+  }
+  
+  handlerMouseOut() {
+    this.setState({isMouseOver:false});
+  }
+  
+
+  render() {
+    return (
+      <div style={!this.state.isMouseOver ? cellStyle : cellStyleIsOver}
+        onMouseOver={() => this.handlerMouseOver()}
+        onMouseOut={() => this.handlerMouseOut()}
+        onClick={() => this.props.PlayerClickedInterB()}
+      >{this.props.c}</div>
+    );
+  }
+
+}
+
+
+
 
 export default Cell;
